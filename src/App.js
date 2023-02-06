@@ -1,11 +1,19 @@
-import Directory from "./components/directory/directory.component";
+import { Routes, Route } from "react-router-dom";
 
-function App() {
+import Home from "./routes/home/home.component";
+import Navigation from "./routes/navigation/navigation.component";
+import SignIn from "./routes/sign-in/sign-in.component";
+
+const App = () => {
   return (
-    <div>
-      <Directory />
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<Home />} />
+        <Route path="/shop" element={<div>I am the shop page!</div>} />
+        <Route path="/sign-in" element={<SignIn />} />
+      </Route>
+    </Routes>
   );
-}
+};
 
 export default App;
