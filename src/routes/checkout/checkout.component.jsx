@@ -4,8 +4,9 @@ import {
   selectCartItems,
 } from '../../store/cart/cart.selector';
 
+import PaymentForm from '../../components/payment-form/payment-form.component';
+
 import CheckoutItems from '../../components/checkout-items/checkout-items.component';
-import Button from '../../components/button/button.component';
 
 import {
   CheckoutContainer,
@@ -44,7 +45,7 @@ const Checkout = () => {
         ))}
       </CheckoutItemsContainer>
       <Total>Total: ${cartTotal}</Total>
-      <Button> Place Order Now </Button>
+      <PaymentForm />
     </CheckoutContainer>
   );
 };
