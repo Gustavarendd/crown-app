@@ -1,59 +1,60 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import {
-  signInWithGooglePopup,
-  signInAuthWithEmailAndPassword,
-} from "../../utils/firebase/firebase.utils";
-
-import FormInput from "../../components/form-input/form-input.component";
+import FormInput from '../../components/form-input/form-input.component';
 import Button, {
   BUTTON_TYPE_CLASSES,
-} from "../../components/button/button.component";
+} from '../../components/button/button.component';
 
 import {
   SignInContainer,
   Header,
   ButtonsContainer,
-} from "./sign-in-form.styles.jsx";
+} from './sign-in-form.styles.jsx';
+
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from '../../store/user/user.action';
 
 const defaultFormFields = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 const SignInForm = () => {
+  const dispatch = useDispatch();
+
   const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
+    dispatch(googleSignInStart());
   };
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
-
     try {
-      await signInAuthWithEmailAndPassword(email, password);
+      dispatch(emailSignInStart(email, password));
 
       resetFormFields();
     } catch (error) {
       switch (error.code) {
-        case "auth/wrong-password":
-          alert("Incorrect Password");
+        case 'auth/wrong-password':
+          alert('Incorrect Password');
           break;
-        case "auth/user-not-found":
-          alert("No user found");
+        case 'auth/user-not-found':
+          alert('No user found');
           break;
         default:
           console.log(error);
       }
     }
   };
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { name, value } = event.target;
 
     setFormFields({ ...formFields, [name]: value });
@@ -68,7 +69,7 @@ const SignInForm = () => {
           label="Email"
           required
           onChange={handleChange}
-          type={"email"}
+          type={'email'}
           name="email"
           value={email}
         />
@@ -76,7 +77,7 @@ const SignInForm = () => {
           label="Password"
           required
           onChange={handleChange}
-          type={"password"}
+          type={'password'}
           name="password"
           value={password}
         />
