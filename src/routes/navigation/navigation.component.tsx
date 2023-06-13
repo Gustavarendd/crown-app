@@ -9,7 +9,7 @@ import { selectCurrentUser } from '../../store/user/user.selector';
 import { selectIsCartOpen } from '../../store/cart/cart.selector';
 import { signOutStart } from '../../store/user/user.action';
 
-import { ReactComponent as CrownLogo } from '../../assets/crown.svg';
+import { ReactComponent as SvgLogo } from '../../assets/logo.svg';
 
 import {
   NavigationContainer,
@@ -29,12 +29,15 @@ const Navigation = () => {
     <Fragment>
       <NavigationContainer>
         <LogoContainer to="/">
-          <CrownLogo className="logo" />
+          <SvgLogo className="logo" />
         </LogoContainer>
         <NavLinks>
           <NavLink to="/shop">SHOP</NavLink>
           {currentUser ? (
-            <NavLink as="span" onClick={signOutUser}>
+            <NavLink
+              as="span"
+              onClick={signOutUser}
+            >
               {' '}
               SIGN OUT{' '}
             </NavLink>

@@ -2,27 +2,31 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const NavigationContainer = styled.div`
-  height: 70px;
+  height: 100px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  border-bottom: 1px solid gray;
 
   @media screen and (max-width: 800px) {
-    height: 60px;
+    height: 70px;
     padding: 10px 20px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 `;
 
 export const LogoContainer = styled(Link)`
   height: 100%;
-  width: 70px;
-  padding: 25px;
+  width: 200px;
 
   @media screen and (max-width: 800px) {
-    width: 50px;
-    padding: 0px;
+    width: 100px;
+  }
+
+  > * {
+    height: 100%;
+    width: 100%;
   }
 `;
 

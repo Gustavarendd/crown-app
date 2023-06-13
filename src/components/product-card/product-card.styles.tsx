@@ -7,9 +7,13 @@ export const ProductCardContainer = styled.div`
   height: 350px;
   align-items: center;
   position: relative;
+  border: 1px solid gray;
+  border-radius: 10px;
+  overflow: hidden;
+
   img {
     width: 100%;
-    height: 95%;
+    height: 90%;
     object-fit: cover;
     margin-bottom: 5px;
   }
@@ -32,6 +36,8 @@ export const ProductCardContainer = styled.div`
 
   @media screen and (max-width: 800px) {
     width: 40vw;
+    align-self: center;
+    justify-self: center;
 
     button {
       display: block;
@@ -51,13 +57,13 @@ export const ProductCardContainer = styled.div`
       }
     }
   }
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 450px) {
     width: 80vw;
   }
 `;
 
 export const Footer = styled.div`
-  width: 100%;
+  width: 90%;
   height: 5%;
   display: flex;
   justify-content: space-between;
