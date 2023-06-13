@@ -82,6 +82,7 @@ const PaymentForm = () => {
           Pay now
         </PaymentButton>
       </FormContainer>
+      <p>*No actual payment is happening</p>
     </PaymentFormContainer>
   );
 };

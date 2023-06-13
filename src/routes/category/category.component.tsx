@@ -10,7 +10,11 @@ import {
 import ProductCard from '../../components/product-card/product-card.component';
 import Spinner from '../../components/spinner/spinner.component';
 
-import { CategoryContainer, CategoryTitle } from './category.styles';
+import {
+  CategoryContainer,
+  CategoryTitle,
+  CategoryView,
+} from './category.styles';
 
 type CategoryRouteParams = {
   category: string;
@@ -30,19 +34,24 @@ const Category = () => {
   }, [category, categoriesMap]);
 
   return (
-    <Fragment>
+    <div>
       <CategoryTitle>{category.toUpperCase()}</CategoryTitle>
       {isLoading ? (
         <Spinner />
       ) : (
-        <CategoryContainer>
-          {products &&
-            products.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-        </CategoryContainer>
+        <CategoryView>
+          <CategoryContainer>
+            {products &&
+              products.map(product => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                />
+              ))}
+          </CategoryContainer>
+        </CategoryView>
       )}
-    </Fragment>
+    </div>
   );
 };
 
